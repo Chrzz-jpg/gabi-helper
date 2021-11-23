@@ -7,10 +7,12 @@ import "./index.css";
 import { Col, Container, Row } from "react-bootstrap";
 
 const mespeak = require("mespeak");
-mespeak.loadConfig(require("mespeak/src/mespeak_config.json"));
-mespeak.loadVoice(require("mespeak/voices/pt.json"));
 
 export default class App extends Component {
+  componentDidMount() {
+    mespeak.loadConfig(require("mespeak/src/mespeak_config.json"));
+    mespeak.loadVoice(require("mespeak/voices/pt.json"));
+  }
   frase = [];
   state = {
     layoutName: "default",
@@ -30,10 +32,9 @@ export default class App extends Component {
   onChange = (input) => {
     this.setState({ input });
 
-    let aux = 0;
+    //Mantem a frase formatada enquanto usado o componente Keyboard
     if (input !== "{space}" && input !== "{enter}") {
-      this.frase[aux] = `{${input}}`;
-      aux++;
+      this.frase = `{${input}}`;
     }
   };
 
@@ -55,26 +56,58 @@ export default class App extends Component {
       layoutName: layoutName === "default" ? "shift" : "default",
     });
   };
+  onKeyPressInput = (e) => {
+    var key = e.keyCode || e.which;
+    //Key do enter
+    if (key === 13) {
+      mespeak.speak(this.frase);
+      this.setState({ input: "" });
+      this.keyboardRef.setInput("");
+      this.frase = [];
+    }
+  };
 
   onChangeInput = (event) => {
     const input = event.target.value;
     this.setState({ input });
     this.keyboardRef.setInput(input);
+    this.frase = input;
+  };
+
+  onButtonClean = () => {
+    this.setState({ input: "" });
+    this.frase = [];
   };
 
   render() {
-
-
     return (
-      <Container>
+      <Container className="container auto">
         <Row>
-          <input
-            value={this.state.input}
-            placeholder={
-              "Utilize o teclado para montar sua frase e aperte 'Enter' para falar"
-            }
-            onChange={this.onChangeInput}
-          />
+          <div className="input-group input-group-xl d-flex input-n-keyboard">
+            <input
+              type="text"
+              value={this.state.input}
+              className="form-control principal-input"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-lg"
+              onChange={this.onChangeInput}
+              onKeyPress={this.onKeyPressInput}
+            />
+            <button
+              onClick={this.onButtonClean}
+              placeholder="limpar"
+              className="input-group-text"
+              id="inputGroup-sizing-sm"
+            >
+              Limpar
+            </button>
+          </div>
+        </Row>
+
+        <Row className={"center"}>
+          <h3>
+            Sugestões: ................ | ................ | .............
+          </h3>
         </Row>
 
         <Row>
@@ -84,7 +117,6 @@ export default class App extends Component {
               theme={`hg-theme-default ${this.state.theme}`}
               layoutName={this.state.layoutName}
               layout={this.state.default}
-              dark
               onChange={this.onChange}
               onKeyPress={this.onKeyPress}
             />

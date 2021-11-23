@@ -46,11 +46,10 @@ input {
   color: white;
 }
 
-.simple-keyboard.dark .hg-button:active {
-  background: #1c4995;
-  color: white;
+.input-n-keyboard {
+  padding: 3%;
 }
 
-#root .simple-keyboard.dark + .simple-keyboard-preview {
-  background: #1c4995;
+.principal-input{
+  height: 150px;
 }
