@@ -1,0 +1,37 @@
+.simple-keyboard .hg-button {
+  height:70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  padding: 0.5% 0.5% 0.5% 0.5%;
+}
+.dark {
+  background: #313131;
+}
+
+.simple-keyboard.dark .hg-button {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 0.5% 0.5% 0.5% 0.5%;
+
+}
+
+.input-n-keyboard {
+  padding: 1% 2% 2% 2%;
+}
+
+.principal-input-light {
+  padding: 3%;
+  height: 150px;
+}
+.principal-input-dark {
+  padding: 3%;
+  height: 150px;
+  background: rgba(1, 1, 1, 0.1);
+}
