@@ -1,0 +1,16 @@
+{
+    "short_name": "Gabi-Helper",
+    "name": "Gabi Helper - O ajudante de fala",
+    "icons": [
+      {
+        "src": "/images/logo.jpg",
+        "type": "image/svg+xml",
+        "sizes": "40x40"
+      }      
+    ],
+    "start_url": "/?source=pwa",
+    "background_color": "#fafafa",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#fafafa"
+  }

@@ -1,0 +1,49 @@
+:root {
+  --cor-btn-dark-mode: rgba(0, 0, 0);
+  --cor-btn-dark-hover: #a3a3a3;
+  --cor-secundaria-btn-dark: #ffffff;
+
+  --cor-btn-light-mode: #fafafa;
+  --cor-btn-light-hover: #a3a3a3;
+  --cor-secundaria-btn-light: #000000;
+}
+//da pra melhorar o css com o :root
+.btn-dark {
+  display: flex;
+  float: right;
+  margin-left: 10px;
+  background-color: var(--cor-btn-dark-mode);
+  outline: none;
+  color: var(--cor-secundaria-btn-dark);
+}
+
+.btn-dark:hover {
+  background-color: var(--cor-btn-dark-hover);
+  outline: none;
+  color: var(--cor-secundaria-btn-dark);
+}
+
+.btn-light {
+  display: block;
+  float: right;
+  margin-right: 10px;
+
+  background-color: var(--cor-btn-light-mode);
+  outline: none;
+  color: var(--cor-secundaria-btn-light);
+}
+
+.btn-light:hover {
+  background-color: var(--cor-btn-light-hover);
+  outline: none;
+  color: var(--cor-secundaria-btn-light);
+}
+
+.nome {
+  display: flex;
+  float: right;
+  color: #d1d0d0;
+}
+.nome:hover{
+    color: #fff;
+}
